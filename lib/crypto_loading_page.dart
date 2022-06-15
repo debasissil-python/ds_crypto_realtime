@@ -16,7 +16,7 @@ class _CryptoLoadingPageState extends State<CryptoLoadingPage> {
   }
 
   void getCryptoData() {
-    Future.delayed(const Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return AllCryptoScreen();
       }));
@@ -84,7 +84,7 @@ class _CryptoLoadingPageState extends State<CryptoLoadingPage> {
                       ),
                     ),
                     Text(
-                      'Hobby Networking',
+                      'Codoweb',
                       style: TextStyle(
                         fontSize: 22,
                         fontStyle: FontStyle.italic,

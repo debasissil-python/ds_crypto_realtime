@@ -156,31 +156,45 @@ class _AllCryptoScreenState extends State<AllCryptoScreen> {
             child: ListView.builder(
               itemCount: cryptoDetailsList.length,
               itemBuilder: (context, index) {
-                return CryptoContainers(
-                  name: cryptoDetailsList[index].name,
-                  marketCapRank: cryptoDetailsList[index].marketCapRank.toInt(),
-                  imageURL: cryptoDetailsList[index].imageURL,
-                  currentPrice:
-                      cryptoDetailsList[index].currentPrice.toDouble(),
-                  priceChange: cryptoDetailsList[index].priceChange.toDouble(),
-                  priceChangePercentage:
-                      cryptoDetailsList[index].priceChangePercentage.toDouble(),
-                  symbol: cryptoDetailsList[index].symbol,
-                  marketCap: cryptoDetailsList[index].marketCap.toDouble(),
-                  marketCapChange:
-                      cryptoDetailsList[index].marketCapChange.toDouble(),
-                  marketCapChangePercentage: cryptoDetailsList[index]
-                      .marketCapChangePercentage
-                      .toDouble(),
-                  fullyDilutedValuation:
-                      cryptoDetailsList[index].fullyDilutedValuation.toInt(),
-                  totalVolume: cryptoDetailsList[index].totalVolume.toDouble(),
-                  high: cryptoDetailsList[index].high.toDouble(),
-                  low: cryptoDetailsList[index].low.toDouble(),
-                  circulatingSupply:
-                      cryptoDetailsList[index].circulatingSupply.toDouble(),
-                  totalSupply: cryptoDetailsList[index].totalSupply.toDouble(),
-                );
+                if (cryptoDetailsList.isNotEmpty) {
+                  return CryptoContainers(
+                    name: cryptoDetailsList[index].name,
+                    marketCapRank:
+                        cryptoDetailsList[index].marketCapRank.toInt(),
+                    imageURL: cryptoDetailsList[index].imageURL,
+                    currentPrice:
+                        cryptoDetailsList[index].currentPrice.toDouble(),
+                    priceChange:
+                        cryptoDetailsList[index].priceChange.toDouble(),
+                    priceChangePercentage: cryptoDetailsList[index]
+                        .priceChangePercentage
+                        .toDouble(),
+                    symbol: cryptoDetailsList[index].symbol,
+                    marketCap: cryptoDetailsList[index].marketCap.toDouble(),
+                    marketCapChange:
+                        cryptoDetailsList[index].marketCapChange.toDouble(),
+                    marketCapChangePercentage: cryptoDetailsList[index]
+                        .marketCapChangePercentage
+                        .toDouble(),
+                    fullyDilutedValuation:
+                        cryptoDetailsList[index].fullyDilutedValuation.toInt(),
+                    totalVolume:
+                        cryptoDetailsList[index].totalVolume.toDouble(),
+                    high: cryptoDetailsList[index].high.toDouble(),
+                    low: cryptoDetailsList[index].low.toDouble(),
+                    circulatingSupply:
+                        cryptoDetailsList[index].circulatingSupply.toDouble(),
+                    totalSupply:
+                        cryptoDetailsList[index].totalSupply.toDouble(),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.amber,
+                      //backgroundColor: Colors.blueGrey,
+                    ),
+                  );
+                }
               },
             ),
           ),
