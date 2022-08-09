@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:ds_crypto_realtime/crypto_containers.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+//import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 import 'package:ds_crypto_realtime/crypto_details.dart';
 import 'package:ds_crypto_realtime/dropdown_button.dart';
@@ -14,7 +14,7 @@ class AllCryptoScreen extends StatefulWidget {
 }
 
 class _AllCryptoScreenState extends State<AllCryptoScreen> {
-  Widget appTitle = const Text('Crypto Check');
+  Widget appTitle = const Text('Crypto Realtime');
   Icon homeIcon = const Icon(Icons.monetization_on, size: 30);
   Icon searchIcon = const Icon(Icons.search_rounded, size: 30);
 
@@ -44,11 +44,17 @@ class _AllCryptoScreenState extends State<AllCryptoScreen> {
       return cryptoDetailsList;
     } else {
       return const Center(
-        child: SpinKitDualRing(
-          color: Colors.blueGrey,
-          size: 100,
+        child: CircularProgressIndicator(
+          color: Colors.amber,
         ),
       );
+
+      // return const Center(
+      //   child: SpinKitDualRing(
+      //     color: Colors.blueGrey,
+      //     size: 100,
+      //   ),
+      // );
 
       //throw Exception('Crypto Coins did not load. ${response.statusCode}');
     }
@@ -57,7 +63,7 @@ class _AllCryptoScreenState extends State<AllCryptoScreen> {
   @override
   void initState() {
     fetchCryptoCoin();
-    Timer.periodic(const Duration(seconds: 10), (timer) => fetchCryptoCoin());
+    Timer.periodic(const Duration(seconds: 3), (timer) => fetchCryptoCoin());
     super.initState();
   }
 
@@ -76,45 +82,6 @@ class _AllCryptoScreenState extends State<AllCryptoScreen> {
             });
           },
         ),
-        // ignore: prefer_const_literals_to_create_immutables
-        //actions: [
-        // IconButton(
-        //   icon: searchIcon,
-        //   onPressed: () {
-        //     setState(() {
-        //       if (searchIcon.icon == Icons.search) {
-        //         searchIcon = const Icon(Icons.close);
-        //         appTitle = const TextField(
-        //           showCursor: true,
-        //           style: TextStyle(color: Colors.white),
-        //           decoration: InputDecoration(
-        //             prefixIcon: Icon(
-        //               Icons.search,
-        //               color: Colors.white,
-        //             ),
-        //             hintText: 'Search Cryptos...',
-        //             hintStyle: TextStyle(
-        //               fontStyle: FontStyle.italic,
-        //               color: Colors.white,
-        //             ),
-        //             focusedBorder: UnderlineInputBorder(
-        //               borderSide: BorderSide(color: Colors.white),
-        //             ),
-        //           ),
-        //         );
-        //       } else {
-        //         searchIcon = const Icon(Icons.search);
-        //         appTitle = const Text('Crypto Check');
-        //       }
-        //     });
-        //
-        //     // showSearch(
-        //     //   context: context,
-        //     //   delegate: CryptoSearch(cryptoNames),
-        //     //);
-        //   },
-        // ),
-        //],
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

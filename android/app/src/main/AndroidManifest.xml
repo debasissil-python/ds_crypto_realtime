@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.ds_crypto_realtime">
+    package="com.codoweb.cryptorealtime">
    <application
-        android:label="ds_crypto_realtime"
+        android:label="Crypto Realtime"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

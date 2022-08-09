@@ -40,8 +40,8 @@ class _CryptoLoadingPageState extends State<CryptoLoadingPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
+          children: const [
+            Text(
               'Crypto Realtime',
               style: TextStyle(
                 fontSize: 28,
@@ -57,50 +57,27 @@ class _CryptoLoadingPageState extends State<CryptoLoadingPage> {
                 ],
               ),
             ),
-            const SpinKitSpinningLines(
+            SpinKitSpinningLines(
               size: 120,
               color: Colors.limeAccent,
               lineWidth: 4,
             ),
-            Center(
-              // ignore: avoid_unnecessary_containers
-              child: Container(
-                child: Column(
-                  children: const [
-                    Text(
-                      'fuelled by',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2,
-                        color: Colors.limeAccent,
-                        shadows: [
-                          Shadow(
-                            offset: Offset(5, 5),
-                            blurRadius: 5,
-                            color: Colors.black,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text(
-                      'Codoweb',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 2,
-                        color: Colors.limeAccent,
-                        shadows: [
-                          Shadow(
-                            offset: Offset(5, 5),
-                            blurRadius: 4,
-                            color: Colors.black,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+            Text(
+              'fuelled by:\n CodoWeb',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: 'Pacifico',
+                color: Colors.limeAccent,
+                fontSize: 14,
+                letterSpacing: 2,
+                fontStyle: FontStyle.italic,
+                shadows: [
+                  Shadow(
+                    offset: Offset(5, 5),
+                    blurRadius: 4,
+                    color: Colors.black,
+                  ),
+                ],
               ),
             ),
           ],
