@@ -10,10 +10,10 @@ import 'package:ds_crypto_realtime/dropdown_button.dart';
 // ignore: use_key_in_widget_constructors
 class AllCryptoScreen extends StatefulWidget {
   @override
-  _AllCryptoScreenState createState() => _AllCryptoScreenState();
+  AllCryptoScreenState createState() => AllCryptoScreenState();
 }
 
-class _AllCryptoScreenState extends State<AllCryptoScreen> {
+class AllCryptoScreenState extends State<AllCryptoScreen> {
   Widget appTitle = const Text('Crypto Realtime');
   Icon homeIcon = const Icon(Icons.monetization_on, size: 30);
   Icon searchIcon = const Icon(Icons.search_rounded, size: 30);

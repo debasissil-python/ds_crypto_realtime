@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.codoweb.cryptorealtime">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="Crypto Realtime"
         android:name="${applicationName}"

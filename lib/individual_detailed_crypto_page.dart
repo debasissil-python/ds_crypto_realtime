@@ -22,6 +22,7 @@ class DetailedIndividualCrypto extends StatefulWidget {
   //   this.totalSupply}) : super(key: key);
 
   const DetailedIndividualCrypto({
+    Key? key,
     required this.name,
     required this.marketCapRank,
     required this.imageURL,
@@ -38,7 +39,7 @@ class DetailedIndividualCrypto extends StatefulWidget {
     required this.low,
     required this.circulatingSupply,
     required this.totalSupply,
-  });
+  }) : super(key: key);
 
   final String name;
   final int marketCapRank;
@@ -59,11 +60,11 @@ class DetailedIndividualCrypto extends StatefulWidget {
   final double totalSupply;
 
   @override
-  _DetailedIndividualCryptoState createState() =>
-      _DetailedIndividualCryptoState();
+  DetailedIndividualCryptoState createState() =>
+      DetailedIndividualCryptoState();
 }
 
-class _DetailedIndividualCryptoState extends State<DetailedIndividualCrypto> {
+class DetailedIndividualCryptoState extends State<DetailedIndividualCrypto> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,10 +83,6 @@ class _DetailedIndividualCryptoState extends State<DetailedIndividualCrypto> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              child: Image.network(
-                widget.imageURL,
-                height: 80,
-              ),
               padding: EdgeInsets.all(12),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -97,6 +94,10 @@ class _DetailedIndividualCryptoState extends State<DetailedIndividualCrypto> {
                       spreadRadius: 6,
                     ),
                   ]),
+              child: Image.network(
+                widget.imageURL,
+                height: 80,
+              ),
             ),
             SizedBox(height: 20),
             Text(
@@ -116,7 +117,7 @@ class _DetailedIndividualCryptoState extends State<DetailedIndividualCrypto> {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Text(
-                  'Ranking : ' + widget.marketCapRank.toString(),
+                  'Ranking : ${widget.marketCapRank}',
                   style: TextStyle(
                     color: Color(0XFF263238),
                     fontWeight: FontWeight.bold,
@@ -267,10 +268,7 @@ class _DetailedIndividualCryptoState extends State<DetailedIndividualCrypto> {
                       Text(
                         widget.priceChange.toDouble() < 0
                             ? widget.priceChange.toDouble().toStringAsFixed(2)
-                            : '+ ' +
-                                widget.priceChange
-                                    .toDouble()
-                                    .toStringAsFixed(2),
+                            : '+ ${widget.priceChange.toDouble().toStringAsFixed(2)}',
                         style: TextStyle(
                           color: widget.priceChange.toDouble() < 0
                               ? Colors.red[900]
@@ -299,15 +297,8 @@ class _DetailedIndividualCryptoState extends State<DetailedIndividualCrypto> {
                       ),
                       Text(
                         widget.priceChangePercentage.toDouble() < 0
-                            ? widget.priceChangePercentage
-                                    .toDouble()
-                                    .toStringAsFixed(2) +
-                                ' %'
-                            : '+ ' +
-                                widget.priceChangePercentage
-                                    .toDouble()
-                                    .toStringAsFixed(2) +
-                                ' %',
+                            ? '${widget.priceChangePercentage.toDouble().toStringAsFixed(2)} %'
+                            : '+ ${widget.priceChangePercentage.toDouble().toStringAsFixed(2)} %',
                         style: TextStyle(
                           color: widget.priceChangePercentage.toDouble() < 0
                               ? Colors.red[900]
@@ -368,10 +359,7 @@ class _DetailedIndividualCryptoState extends State<DetailedIndividualCrypto> {
                               ? widget.marketCapChange
                                   .toDouble()
                                   .toStringAsFixed(0)
-                              : '+ ' +
-                                  widget.marketCapChange
-                                      .toDouble()
-                                      .toStringAsFixed(0),
+                              : '+ ${widget.marketCapChange.toDouble().toStringAsFixed(0)}',
                           style: TextStyle(
                             color: widget.marketCapChange.toDouble() < 0
                                 ? Colors.red[900]
@@ -402,15 +390,8 @@ class _DetailedIndividualCryptoState extends State<DetailedIndividualCrypto> {
                       Flexible(
                         child: Text(
                           widget.marketCapChangePercentage.toDouble() < 0
-                              ? widget.marketCapChangePercentage
-                                      .toDouble()
-                                      .toStringAsFixed(2) +
-                                  ' %'
-                              : '+ ' +
-                                  widget.marketCapChangePercentage
-                                      .toDouble()
-                                      .toStringAsFixed(2) +
-                                  ' %',
+                              ? '${widget.marketCapChangePercentage.toDouble().toStringAsFixed(2)} %'
+                              : '+ ${widget.marketCapChangePercentage.toDouble().toStringAsFixed(2)} %',
                           style: TextStyle(
                             color:
                                 widget.marketCapChangePercentage.toDouble() < 0

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'individual_detailed_crypto_page.dart';
 
-// ignore: use_key_in_widget_constructors
-class CryptoContainers extends StatelessWidget {
+class CryptoContainers extends StatefulWidget {
   const CryptoContainers({
+    Key? key,
     required this.name,
     required this.marketCapRank,
     required this.imageURL,
@@ -20,7 +20,7 @@ class CryptoContainers extends StatelessWidget {
     required this.low,
     required this.circulatingSupply,
     required this.totalSupply,
-  });
+  }) : super(key: key);
 
   final String name;
   final int marketCapRank;
@@ -40,6 +40,11 @@ class CryptoContainers extends StatelessWidget {
   final double circulatingSupply;
   final double totalSupply;
 
+  @override
+  State<CryptoContainers> createState() => _CryptoContainersState();
+}
+
+class _CryptoContainersState extends State<CryptoContainers> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -74,26 +79,26 @@ class CryptoContainers extends StatelessWidget {
                 6,
               ),
               child: ElevatedButton(
-                child: Image.network(imageURL),
                 onPressed: () {
                   var route = MaterialPageRoute(
                     builder: (BuildContext context) => DetailedIndividualCrypto(
-                      name: name,
-                      marketCapRank: marketCapRank,
-                      imageURL: imageURL,
-                      currentPrice: currentPrice,
-                      priceChange: priceChange,
-                      priceChangePercentage: priceChangePercentage,
-                      symbol: symbol,
-                      marketCap: marketCap,
-                      marketCapChange: marketCapChange,
-                      marketCapChangePercentage: marketCapChangePercentage,
-                      fullyDilutedValuation: fullyDilutedValuation,
-                      totalVolume: totalVolume,
-                      high: high,
-                      low: low,
-                      circulatingSupply: circulatingSupply,
-                      totalSupply: totalSupply,
+                      name: widget.name,
+                      marketCapRank: widget.marketCapRank,
+                      imageURL: widget.imageURL,
+                      currentPrice: widget.currentPrice,
+                      priceChange: widget.priceChange,
+                      priceChangePercentage: widget.priceChangePercentage,
+                      symbol: widget.symbol,
+                      marketCap: widget.marketCap,
+                      marketCapChange: widget.marketCapChange,
+                      marketCapChangePercentage:
+                          widget.marketCapChangePercentage,
+                      fullyDilutedValuation: widget.fullyDilutedValuation,
+                      totalVolume: widget.totalVolume,
+                      high: widget.high,
+                      low: widget.low,
+                      circulatingSupply: widget.circulatingSupply,
+                      totalSupply: widget.totalSupply,
                     ),
                   );
                   Navigator.of(context).push(route);
@@ -112,6 +117,7 @@ class CryptoContainers extends StatelessWidget {
                     style: BorderStyle.solid,
                   ),
                 ),
+                child: Image.network(widget.imageURL),
               ),
             ),
             Expanded(
@@ -122,16 +128,16 @@ class CryptoContainers extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      name.toUpperCase(),
+                      widget.name.toUpperCase(),
                       style: TextStyle(
-                        color: priceChange.toDouble() < 0
+                        color: widget.priceChange.toDouble() < 0
                             ? Colors.red[900]
                             : Colors.green,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      'Rank: ' + marketCapRank.toString(),
+                      'Rank: ${widget.marketCapRank}',
                       style: const TextStyle(
                         color: Color(0XFF263238),
                         fontWeight: FontWeight.bold,
@@ -146,7 +152,7 @@ class CryptoContainers extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  currentPrice.toDouble().toString(),
+                  widget.currentPrice.toDouble().toString(),
                   style: const TextStyle(
                     color: Colors.indigo,
                     fontWeight: FontWeight.bold,
@@ -154,12 +160,12 @@ class CryptoContainers extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    priceChange.toDouble() < 0
-                        ? priceChange.toDouble().toStringAsFixed(3)
-                        : '+ ' + priceChange.toDouble().toStringAsFixed(3),
+                    widget.priceChange.toDouble() < 0
+                        ? widget.priceChange.toDouble().toStringAsFixed(3)
+                        : '+ ${widget.priceChange.toDouble().toStringAsFixed(3)}',
                     // ignore: prefer_const_constructors
                     style: TextStyle(
-                      color: priceChange.toDouble() < 0
+                      color: widget.priceChange.toDouble() < 0
                           ? Colors.red[900]
                           : Colors.green,
                       fontWeight: FontWeight.bold,
@@ -167,16 +173,13 @@ class CryptoContainers extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  priceChangePercentage.toDouble() < 0
-                      ? priceChangePercentage.toDouble().toStringAsFixed(3) +
-                          ' %'
-                      : '+ ' +
-                          priceChangePercentage.toDouble().toStringAsFixed(3) +
-                          ' %',
+                  widget.priceChangePercentage.toDouble() < 0
+                      ? '${widget.priceChangePercentage.toDouble().toStringAsFixed(3)} %'
+                      : '+ ${widget.priceChangePercentage.toDouble().toStringAsFixed(3)} %',
 
                   // ignore: prefer_const_constructors
                   style: TextStyle(
-                    color: priceChangePercentage.toDouble() < 0
+                    color: widget.priceChangePercentage.toDouble() < 0
                         ? Colors.red[900]
                         : Colors.green,
                     fontWeight: FontWeight.bold,

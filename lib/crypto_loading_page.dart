@@ -5,10 +5,10 @@ import 'all_crypto_screen.dart';
 // ignore: use_key_in_widget_constructors
 class CryptoLoadingPage extends StatefulWidget {
   @override
-  _CryptoLoadingPageState createState() => _CryptoLoadingPageState();
+  CryptoLoadingPageState createState() => CryptoLoadingPageState();
 }
 
-class _CryptoLoadingPageState extends State<CryptoLoadingPage> {
+class CryptoLoadingPageState extends State<CryptoLoadingPage> {
   @override
   void initState() {
     getCryptoData();

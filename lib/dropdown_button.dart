@@ -8,10 +8,10 @@ class DropDownButton extends StatefulWidget {
   const DropDownButton({Key? key}) : super(key: key);
 
   @override
-  _DropDownButtonState createState() => _DropDownButtonState();
+  DropDownButtonState createState() => DropDownButtonState();
 }
 
-class _DropDownButtonState extends State<DropDownButton> {
+class DropDownButtonState extends State<DropDownButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,7 +35,9 @@ class _DropDownButtonState extends State<DropDownButton> {
           items: currencyList.map((String currencyName) {
             // ignore: prefer_const_constructors
             return DropdownMenuItem(
-                child: Text(currencyName), value: currencyName);
+              value: currencyName,
+              child: Text(currencyName),
+            );
           }).toList(),
           onChanged: (value) {
             setState(() {
